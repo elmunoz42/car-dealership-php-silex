@@ -26,5 +26,17 @@ class Car
   {
       return $this->miles;
   }
+
+  function save() {
+      array_push($_SESSION['car_list'], $this);
+  }
+
+  static function getAll() {
+      return $_SESSION['car_list'];
+  }
+
+  static function deleteAll() {
+      $_SESSION['car_list'] = array();
+  }
 }
 ?>
