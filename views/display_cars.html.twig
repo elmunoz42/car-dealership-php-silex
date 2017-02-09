@@ -1,0 +1,12 @@
+<h1>Your Car Dealership</h1>
+    {% if carMatches is empty %}
+        <p>Sorry no cars match your search.</p>
+    {% else %}
+        {% for car in carMatches %}
+            <ul>
+                <li>{{ car.getModel }}</li>
+                <li>${{ car.getPrice }}</li>
+                <li>{{ car.getMiles }} miles</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
