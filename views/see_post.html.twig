@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1>Thank you for posting a car!</h1>
+    <ul>
+      <li>Model: {{ new_car.getModel }}</li>
+      <li>Mileage: {{ new_car.getMiles }}</li>
+      <li>Price: ${{ new_car.getPrice }}</li>
+
+    </ul>
+    <form action='/find_cars' >
+        <button type='submit'>Find Cars</button>
+    </form>
+    <form action='/post_car' >
+        <button type='submit'>Post a Car</button>
+    </form>
+</body>
+</html>

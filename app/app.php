@@ -22,15 +22,18 @@
       'twig.path' => __DIR__.'/../views'
     ));
 
-    $app->get("/", function() use ($app) {
+    $app->get("/", function() use($app) {
+
+        return $app['twig']->render('root.html.twig');
+    });
+
+    $app->get("/find_cars", function() use ($app) {
 
       return $app['twig']->render('find_cars.html.twig');
 
     });
 
- // adfdasfds
-
-    $app->get("/Car", function() use ($app) {
+    $app->get("/display_cars", function() use ($app) {
 
         $cars_matching_search = array();
         $cars = Car::getAll();
@@ -41,7 +44,22 @@
         }
 
         return $app['twig']->render('display_cars.html.twig', array('carMatches' => $cars_matching_search));
+
     });
+
+    $app->get("/post_car", function() use ($app) {
+
+        return $app['twig']->render('post_car.html.twig');
+
+    });
+    $app->post("/see_post", function() use ($app) {
+
+        $newCar= new Car($_POST['make'],$_POST['price'],$_POST['mileage']);
+        $newCar->save();
+        return $app['twig']->render('see_post.html.twig', array('new_car' => $newCar ));
+
+    });
+
 
     return $app;
 ?>
